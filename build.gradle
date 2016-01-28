@@ -1,0 +1,96 @@
+import groovy.transform.Field
+
+group 'akqaBp'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+@Field systemPropertySet
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+defaultTasks 'clean', 'test'
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    agent
+}
+
+dependencies {
+    compile "com.jayway.restassured:rest-assured:${restAssuredVersion}"
+    compile "com.jayway.restassured:json-schema-validator:${restAssuredVersion}"
+
+    compile "com.eclipsesource.minimal-json:minimal-json:${minimalJsonVersion}"
+    compile "com.sun.mail:javax.mail:${javaMailVersion}"
+
+    compile "org.seleniumhq.selenium:selenium-java:${seleniumVersion}"
+    compile "com.codeborne:selenide:${selenideVersion}"
+    compile "com.codeborne:phantomjsdriver:${phantomJsVersion}"
+
+    compile "org.grails:grails-core:${grailsCoreVersion}"
+
+    compile "org.testng:testng:${testngVersion}"
+    compile "org.apache.logging.log4j:log4j-api:${log4jVersion}"
+    compile "org.apache.logging.log4j:log4j-core:${log4jVersion}"
+
+    compile "ru.yandex.qatools.allure:allure-testng-adaptor:${allureVersion}"
+    agent "org.aspectj:aspectjweaver:${aspectjVersion}"
+}
+
+loadConfiguration()
+
+sourceSets {
+    main {
+        resources {
+            srcDir 'src/main/resources'
+        }
+    }
+    test {
+        resources {
+            srcDir 'src/test/resources'
+        }
+    }
+}
+
+test.doFirst {
+    //this provides ability to get screen shots by allure
+    jvmArgs "-javaagent:${configurations.agent.singleFile}"
+
+}
+
+test {
+    useTestNG {
+        systemProperties(System.getProperties() + systemPropertySet)
+        println(System.getProperties())
+        options.suites(System.getProperty('suite'))
+    }
+}
+
+def loadConfiguration() {
+    //specify common sytem properties`
+    System.setProperty('env', hasProperty('env') ? env : 'dflt')
+    System.setProperty('browserClient', hasProperty('browserClient') ? browserClient : 'gc')
+    System.setProperty('i18n', hasProperty('i18n') ? i18n : 'en')
+    System.setProperty('log4j.configurationFile', 'src/main/resources/log4j.xml')
+    System.setProperty('suite', 'src/test/resources/suite/' + (hasProperty('suite') ? suite : 'testng_dflt.xml').toString())
+
+    //specify env specific properties from config file
+    def configFile = file('config.groovy')
+    def configProperties = new ConfigSlurper(System.getProperty('env')).parse(configFile.toURI().toURL())
+
+    //defines if url specified and override it
+    def envUrl = (hasProperty('url') && getProperty('url') != "" ? url : configProperties.getProperty('url'))
+    configProperties.setProperty('url', envUrl)
+
+//    //defines if tenant specified and override it
+//    def envTenant = (hasProperty('tenant') && getProperty('tenant') != "" ? tenant : configProperties.getProperty('tenant'))
+//    configProperties.setProperty('tenant', envTenant)
+
+//    //magic that adds new properties w/o overriding existent ones
+    systemPropertySet = System.getProperties() + configProperties.toProperties()
+    System.setProperties(systemPropertySet)
+}
