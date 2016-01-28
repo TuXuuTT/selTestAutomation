@@ -4,7 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import static org.testng.AssertJUnit.assertEquals;
-
+@Deprecated
 public class BasePageOld {
 
 //    protected static final Logger LOGGER = LogManager.getLogger(BasePageOld.class);

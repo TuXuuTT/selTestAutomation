@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Random;
 
-public class BaseTestSelenide implements IHookable {
+public class BaseTest implements IHookable {
     private static RemoteWebDriver wd = null;
     protected final Logger LOGGER = LogManager.getLogger(this);
 
@@ -28,14 +28,18 @@ public class BaseTestSelenide implements IHookable {
         Configuration.timeout = 10000L;
     }
 
-    public RemoteWebDriver getWdInstance() {
+    public RemoteWebDriver getPureWdInstance() {
         return wd;
     }
 
     @BeforeClass(alwaysRun = true)
-    public void beforeClass() throws MalformedURLException {
+    public void beforeClass() {
         setSelenideConfigurations();
-        wd = new BrowserClient().getDriver(EnvironmentConfigurator.getInstance().getTestClient());
+        try {
+            wd = new BrowserClient().getDriver(EnvironmentConfigurator.getInstance().getTestClient());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
         WebDriverRunner.setWebDriver(wd);
     }
 
@@ -62,7 +66,6 @@ public class BaseTestSelenide implements IHookable {
     @Override
     public void run(IHookCallBack callBack, ITestResult testResult) {
         callBack.runTestMethod(testResult);
-
         if (testResult.getThrowable() != null) {
             try {
                 takeScreenShot(testResult.getMethod().getMethodName());

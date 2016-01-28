@@ -1,5 +1,5 @@
 grid {
-    isUsed = true
+    isUsed = false
     seleniumHub = '127.0.0.1:4444'
 }
 
@@ -21,7 +21,7 @@ api {
 
 environments {
     dflt {
-        url = ''
+        url = 'https://www.google.com'
     }
 //    bvt {
 //        url = 'http://clm-aus-009225.bmc.com:8008'

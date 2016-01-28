@@ -75,7 +75,7 @@ def loadConfiguration() {
     System.setProperty('env', hasProperty('env') ? env : 'dflt')
     System.setProperty('browserClient', hasProperty('browserClient') ? browserClient : 'gc')
     System.setProperty('i18n', hasProperty('i18n') ? i18n : 'en')
-    System.setProperty('log4j.configurationFile', 'src/main/resources/log4j.xml')
+    System.setProperty('log4j.configurationFile', 'src/main/resources/log4j2.xml')
     System.setProperty('suite', 'src/test/resources/suite/' + (hasProperty('suite') ? suite : 'testng_dflt.xml').toString())
 
     //specify env specific properties from config file

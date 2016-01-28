@@ -46,7 +46,7 @@ public class EnvironmentConfigurator {
     }
 
     public static String getTestEnvironment() {
-        return System.getProperty("env", "qagl");
+        return System.getProperty("env", "dflt");
     }
 
     public static int getNumOfServices() {

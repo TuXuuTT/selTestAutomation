@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 
 import java.net.MalformedURLException;
-
+@Deprecated
 public class BaseTestOld {
 
 //    private static TestLinkReporter testLinkReporter;

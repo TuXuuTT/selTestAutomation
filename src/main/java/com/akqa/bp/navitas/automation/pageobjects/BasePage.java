@@ -9,11 +9,11 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 
 
-public abstract class BasePageSelenide {
+public abstract class BasePage {
     protected final Logger LOGGER = LogManager.getLogger(this);
     private final WebDriver wd;
 
-    public BasePageSelenide() {
+    public BasePage() {
         wd = WebDriverRunner.getWebDriver();
     }
 
