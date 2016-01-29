@@ -16,6 +16,7 @@
 log/
 target/
 .gradle/
+gradle
 build
 
 # Screenshots

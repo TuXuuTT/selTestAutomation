@@ -71,7 +71,7 @@ test {
 }
 
 def loadConfiguration() {
-    //specify common sytem properties`
+    //specify common system properties
     System.setProperty('env', hasProperty('env') ? env : 'dflt')
     System.setProperty('browserClient', hasProperty('browserClient') ? browserClient : 'gc')
     System.setProperty('i18n', hasProperty('i18n') ? i18n : 'en')
