@@ -112,7 +112,7 @@ public class BrowserClient {
      * Launches Chrome natively or on the remote machine according to settings
      */
     private RemoteWebDriver startChrome() throws MalformedURLException {
-
+        OSUtils.killProcess("chromedriver.exe");
         if (environmentConfigurator.isGridUsed()) {
             DesiredCapabilities cap = DesiredCapabilities.chrome();
             this.webDriver = (new RemoteWebDriver(new URL("http://" + environmentConfigurator.getSeleniumHub() + "/wd/hub"), cap));
@@ -158,7 +158,7 @@ public class BrowserClient {
                     profile.addExtension(firebugFile);
                     profile.addExtension(firepathFile);
                 } else {
-                    LOGGER.warn("Firefox extensions: [firebug] [firepath] are not available");
+                    LOGGER.info("Firefox extensions: [firebug] [firepath] are not available");
                 }
             } catch (Exception e) {
                 LOGGER.error("", e);

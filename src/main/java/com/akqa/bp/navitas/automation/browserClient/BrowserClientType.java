@@ -1,8 +1,5 @@
 package com.akqa.bp.navitas.automation.browserClient;
 
-/**
- * Created by v.shcherbanyuk on 12/26/2014.
- */
 public enum BrowserClientType {
     IE("ie"),
     FF("ff"),

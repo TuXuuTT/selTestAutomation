@@ -11,15 +11,15 @@ import java.util.Properties;
 
 public class EnvironmentConfigurator {
 
+    protected static final Logger LOGGER = LogManager.getLogger(EnvironmentConfigurator.class);
     private static volatile EnvironmentConfigurator environmentConfigurator;
     private static Properties properties = new Properties();
-    protected static final Logger LOGGER = LogManager.getLogger(EnvironmentConfigurator.class);
 
     private EnvironmentConfigurator() throws IOException {
 
         //parse config.groovy and set one environment, which name is taken from system properties
         //It will be used to get it's inside url and parameters
-        //in any case url and other params can be directly overridden if specified in system properties
+        //in any case url and other params can be directly overridden if specified in system properties or gradle
         ConfigSlurper configSlurper = new ConfigSlurper();
         configSlurper.setEnvironment(getTestEnvironment());
         ConfigObject configObject = configSlurper.parse(new File("config.groovy").toURI().toURL());
@@ -49,10 +49,6 @@ public class EnvironmentConfigurator {
         return System.getProperty("env", "dflt");
     }
 
-    public static int getNumOfServices() {
-        return Integer.parseInt(System.getProperty("numService"));
-    }
-
     public Boolean isGridUsed() {
         return Boolean.parseBoolean(properties.getProperty("grid.isUsed"));
     }
@@ -77,52 +73,20 @@ public class EnvironmentConfigurator {
         return properties.getProperty("gmail.password");
     }
 
-    public String getTestLinkUrl() {
-        return properties.getProperty("testlink.url");
-    }
-
-    public String getTestLinkProjectName() {
-        return properties.getProperty("testlink.project");
-    }
-
-    public String getTestLinkPlan() {
-        return properties.getProperty("testlink.testPlan");
-    }
-
-    public String getTestLinkSuite() {
-        return properties.getProperty("testlink.testSuite");
-    }
-
-    public String getTestLinkBuild() {
-        return properties.getProperty("testlink.testBuild");
-    }
-
     public String getTestClient() {
         return System.getProperty("browserClient", "gc");
-    }
-
-    public Boolean getTestLinkReporter() {
-        return Boolean.parseBoolean(System.getProperty("testLinkReport"));
     }
 
     public String getAppUrl() {
         return System.getProperty("url", properties.get("url").toString());
     }
 
-    public String getTenant() {
-        return "@" + System.getProperty("tenant", properties.get("tenant").toString());
-    }
+//    public String getTenant() {
+//        return "@" + System.getProperty("tenant", properties.get("tenant").toString());
+//    }
 
     public String getAdminLogin() {
-        return properties.getProperty("users.admin.login") + getTenant();
-    }
-
-    public String getSupplierAdminLogin() {
-        return properties.getProperty("users.supplierAdmin.login") + getTenant();
-    }
-
-    public String getAssetManagerLogin() {
-        return properties.getProperty("users.assetManager.login") + getTenant();
+        return properties.getProperty("users.admin.login");
     }
 
     public String getPassword() {
@@ -132,9 +96,4 @@ public class EnvironmentConfigurator {
     public int getApiPort() {
         return Integer.parseInt(properties.getProperty("api.port"));
     }
-
-    public int getNumOfVirtualMarketPlaces() {
-        return Integer.parseInt(System.getProperty("numVMP"));
-    }
-
 }

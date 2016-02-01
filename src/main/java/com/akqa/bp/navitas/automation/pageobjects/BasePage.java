@@ -26,8 +26,8 @@ public abstract class BasePage {
     }
 
     protected void open(String url) {
-        LOGGER.info("Loading page: {}", url);
         Selenide.open(url);
+        LOGGER.info("Loading page: {}", url);
     }
 
     public void setWebDriverWindowSize(int width, int height) {

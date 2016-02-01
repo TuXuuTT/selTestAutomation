@@ -9,7 +9,7 @@ import ru.yandex.qatools.allure.annotations.Stories;
 
 import static com.codeborne.selenide.Selenide.open;
 
-public class ClassToTest extends BaseTest {
+public class TestClassExample extends BaseTest {
 
     SimpleGoogleTestPage simpleGoogleTestPage;
 

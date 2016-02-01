@@ -6,8 +6,8 @@ grid {
 /*gmail {
     host = 'imap.gmail.com'
     mailStoreType = 'imaps'
-    login = 'myservice.qa@gmail.com'
-    password = 'P@rtnerpedia'
+    login = 'mymail@gmail.com'
+    password = 'password'
 }*/
 
 users {
@@ -26,9 +26,5 @@ environments {
 //    bvt {
 //        url = 'http://clm-aus-009225.bmc.com:8008'
 //        tenant = 'cokebvt.com'
-//    }
-//    psr {
-//        url = 'http://vl-aus-sbe226.bmc.com:8008'
-//        tenant = 'cokepsr.com'
 //    }
 }

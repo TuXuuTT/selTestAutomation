@@ -39,6 +39,7 @@ public class BaseTest implements IHookable {
             wd = new BrowserClient().getDriver(EnvironmentConfigurator.getInstance().getTestClient());
         } catch (MalformedURLException e) {
             e.printStackTrace();
+            LOGGER.error(e);
         }
         WebDriverRunner.setWebDriver(wd);
     }

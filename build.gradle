@@ -5,6 +5,22 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 
+def restAssuredVersion='2.8.0'
+def minimalJsonVersion='0.9.4'
+def javaMailVersion='1.5.5'
+
+def seleniumVersion='2.49.1'
+def selenideVersion='3.1.3'
+def phantomJsVersion='1.2.1'
+
+def grailsCoreVersion='3.0.12'
+
+def testngVersion='6.9.10'
+def log4jVersion='2.5'
+
+def aspectjVersion='1.8.8'
+def allureVersion='1.4.20'
+
 @Field systemPropertySet
 
 sourceCompatibility = JavaVersion.VERSION_1_8
