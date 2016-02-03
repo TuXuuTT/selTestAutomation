@@ -1,6 +1,6 @@
-package com.akqa.bp.navitas.automation.browserClient;
+package com.ui.automation.browserClient;
 
-import com.akqa.bp.navitas.automation.environment.EnvironmentConfigurator;
+import com.ui.automation.environment.EnvironmentConfigurator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Dimension;

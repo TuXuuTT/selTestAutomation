@@ -1,4 +1,4 @@
-package com.akqa.bp.navitas.automation;
+package com.ui.automation;
 
 @Deprecated
 /**

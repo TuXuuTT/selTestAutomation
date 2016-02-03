@@ -1,4 +1,4 @@
-package com.akqa.bp.navitas.automation.browserClient;
+package com.ui.automation.browserClient;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

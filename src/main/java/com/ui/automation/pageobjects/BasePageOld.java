@@ -1,4 +1,4 @@
-package com.akqa.bp.navitas.automation.pageobjects;
+package com.ui.automation.pageobjects;
 
 /**
  * Keeping to store some created but currently not used wrappers against native Selenium using PageFactory. May be useful sometime*/

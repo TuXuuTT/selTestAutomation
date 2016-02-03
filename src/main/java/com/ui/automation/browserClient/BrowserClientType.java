@@ -1,4 +1,4 @@
-package com.akqa.bp.navitas.automation.browserClient;
+package com.ui.automation.browserClient;
 
 public enum BrowserClientType {
     IE("ie"),

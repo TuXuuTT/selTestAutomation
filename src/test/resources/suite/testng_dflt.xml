@@ -3,7 +3,7 @@
 <suite name="[CompanyName] tests" verbose="10" parallel="tests" thread-count="5" group-by-instances="true">
 <test name="[Test Name]">
     <packages>
-        <package name="com.akqa.bp.navitas.automation.web"/>
+        <package name="com.ui.automation.web"/>
     </packages>
 </test>
 </suite>

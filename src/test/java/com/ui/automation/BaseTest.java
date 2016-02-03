@@ -1,7 +1,7 @@
-package com.akqa.bp.navitas.automation;
+package com.ui.automation;
 
-import com.akqa.bp.navitas.automation.browserClient.BrowserClient;
-import com.akqa.bp.navitas.automation.environment.EnvironmentConfigurator;
+import com.ui.automation.browserClient.BrowserClient;
+import com.ui.automation.environment.EnvironmentConfigurator;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import org.apache.logging.log4j.LogManager;

@@ -1,6 +1,6 @@
 import groovy.transform.Field
 
-group 'akqaBp'
+group 'company'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'

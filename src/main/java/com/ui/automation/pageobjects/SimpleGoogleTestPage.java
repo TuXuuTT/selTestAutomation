@@ -1,4 +1,4 @@
-package com.akqa.bp.navitas.automation.pageobjects;
+package com.ui.automation.pageobjects;
 
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;

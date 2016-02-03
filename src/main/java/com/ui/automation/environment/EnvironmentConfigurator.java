@@ -1,4 +1,4 @@
-package com.akqa.bp.navitas.automation.environment;
+package com.ui.automation.environment;
 
 import groovy.util.ConfigObject;
 import groovy.util.ConfigSlurper;

@@ -1,7 +1,7 @@
-package com.akqa.bp.navitas.automation.web;
+package com.ui.automation.web;
 
-import com.akqa.bp.navitas.automation.BaseTest;
-import com.akqa.bp.navitas.automation.pageobjects.SimpleGoogleTestPage;
+import com.ui.automation.BaseTest;
+import com.ui.automation.pageobjects.SimpleGoogleTestPage;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.annotations.Features;
