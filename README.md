@@ -1,5 +1,5 @@
 # selTestAutomation
-Working QA TA Framework
+Working QA TA Framework. has commented out own selenium wrappers classes in favor of using Selenide's
 
 -Durl=""
 
