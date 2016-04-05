@@ -23,7 +23,7 @@ public class BaseTestOld {
     @BeforeClass(groups = {"init"}, alwaysRun = true)
     public void beforeClassInit() throws MalformedURLException {
         client = new BrowserClient();
-        client.getDriver(EnvironmentConfigurator.getInstance().getTestClient());
+        client.getDriver(EnvironmentConfigurator.getInstance().getBrowserClient());
         adminUser = new User(EnvironmentConfigurator.getInstance().getAdminLogin(), EnvironmentConfigurator.getInstance().getPassword()).setFullName("Hannah").setRole(UserRole.ADMINISTRATOR.getValue()).setLoginName(EnvironmentConfigurator.getInstance().getAdminLogin());
         supplierAdminUser = new User(EnvironmentConfigurator.getInstance().getSupplierAdminLogin(), EnvironmentConfigurator.getInstance().getPassword()).setFullName("Julie").setRole(UserRole.SERVICE_SUPPLIER.getValue()).setLoginName(EnvironmentConfigurator.getInstance().getSupplierAdminLogin());
         assetManagerUser = new User(EnvironmentConfigurator.getInstance().getAssetManagerLogin(), EnvironmentConfigurator.getInstance().getPassword()).setFullName("Gary").setRole(UserRole.ASSET_MANAGER.getValue()).setLoginName(EnvironmentConfigurator.getInstance().getAssetManagerLogin());

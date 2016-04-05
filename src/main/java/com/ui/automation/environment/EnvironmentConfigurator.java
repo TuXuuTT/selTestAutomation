@@ -73,7 +73,7 @@ public class EnvironmentConfigurator {
         return properties.getProperty("gmail.password");
     }
 
-    public String getTestClient() {
+    public String getBrowserClient() {
         return System.getProperty("browserClient", "gc");
     }
 

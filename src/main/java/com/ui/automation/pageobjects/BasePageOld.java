@@ -36,7 +36,7 @@ public class BasePageOld {
 
     public void sendKeys(final WebElement webElement, String text) {
         waitForClickable(webElement);
-        if (EnvironmentConfigurator.getInstance().getTestClient().equals(ClientType.IE.toString())) {
+        if (EnvironmentConfigurator.getInstance().getBrowserClient().equals(ClientType.IE.toString())) {
             webElement.sendKeys("a");
         }
         webElement.clear();

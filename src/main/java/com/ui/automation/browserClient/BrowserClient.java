@@ -12,8 +12,6 @@ import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -62,9 +60,6 @@ public class BrowserClient {
                 break;
             case GC:
                 this.webDriver = startChrome();
-                break;
-            case PJS:
-                this.webDriver = startPhantomJs();
                 break;
             default:
                 this.webDriver = startChrome();
@@ -128,17 +123,6 @@ public class BrowserClient {
                 System.setProperty("webdriver.chrome.driver", chromedriverPath);
             }
             this.webDriver = new ChromeDriver();
-        }
-        return this.webDriver;
-    }
-
-    private RemoteWebDriver startPhantomJs() throws MalformedURLException {
-        DesiredCapabilities caps = DesiredCapabilities.phantomjs();
-        caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, currentThread().getContextClassLoader().getResource("phantomjs.exe").getPath());
-        if (environmentConfigurator.isGridUsed()) {
-            this.webDriver = (new RemoteWebDriver(new URL("http://" + environmentConfigurator.getSeleniumHub() + "/wd/hub"), caps));
-        } else {
-            this.webDriver = new PhantomJSDriver(caps);
         }
         return this.webDriver;
     }

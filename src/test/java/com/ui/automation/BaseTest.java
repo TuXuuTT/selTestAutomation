@@ -1,9 +1,9 @@
 package com.ui.automation;
 
-import com.ui.automation.browserClient.BrowserClient;
-import com.ui.automation.environment.EnvironmentConfigurator;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
+import com.ui.automation.browserClient.BrowserClient;
+import com.ui.automation.environment.EnvironmentConfigurator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
@@ -36,7 +36,7 @@ public class BaseTest implements IHookable {
     public void beforeClass() {
         setSelenideConfigurations();
         try {
-            wd = new BrowserClient().getDriver(EnvironmentConfigurator.getInstance().getTestClient());
+            wd = new BrowserClient().getDriver(EnvironmentConfigurator.getInstance().getBrowserClient());
         } catch (MalformedURLException e) {
             e.printStackTrace();
             LOGGER.error(e);
@@ -76,7 +76,7 @@ public class BaseTest implements IHookable {
         }
     }
 
-    @Attachment(value = "Failure in method {0}", type = "image/png")
+    @Attachment(value = "Failure in method {0}", type = "image/jpeg")
     private byte[] takeScreenShot(String failureReason) throws IOException {
         LOGGER.info(String.format("Taking screenshot due to fail in method %s", failureReason));
         return ((TakesScreenshot) wd).getScreenshotAs(OutputType.BYTES);

@@ -3,8 +3,7 @@ package com.ui.automation.browserClient;
 public enum BrowserClientType {
     IE("ie"),
     FF("ff"),
-    GC("gc"),
-    PJS("pjs");
+    GC("gc");
 
     private String browserClientName;
 
