@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import ru.yandex.qatools.allure.annotations.Step;
 
 
 public abstract class BasePage {
@@ -29,6 +30,10 @@ public abstract class BasePage {
     protected void openUrl(String url) {
         Selenide.open(url);
         LOGGER.info("Loading page: {}", url);
+    }
+
+    @Step("_{0}_")
+    protected void allureLog(String value){
     }
 
     public void setWebDriverWindowSize(int width, int height) {
