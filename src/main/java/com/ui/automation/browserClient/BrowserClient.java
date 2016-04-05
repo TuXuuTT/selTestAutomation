@@ -16,6 +16,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.awt.*;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -38,12 +39,16 @@ public class BrowserClient {
 
     public static void maximizeWindow(WebDriver wd) {
         if (!OSUtils.isWindows()) {
-            java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-            Point position = new Point(0, 0);
-            wd.manage().window().setPosition(position);
-            Dimension maximizedScreenSize =
-                    new Dimension((int) screenSize.getWidth(), (int) screenSize.getHeight());
-            wd.manage().window().setSize(maximizedScreenSize);
+            try {
+                java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+                Point position = new Point(0, 0);
+                wd.manage().window().setPosition(position);
+                Dimension maximizedScreenSize =
+                        new Dimension((int) screenSize.getWidth(), (int) screenSize.getHeight());
+                wd.manage().window().setSize(maximizedScreenSize);
+            } catch (HeadlessException e) {
+                LOGGER.warn("GraphicsEnvironment.isHeadless(), can't maximize screen by getting actual resolution");
+            }
         } else {
             wd.manage().window().maximize();
         }
